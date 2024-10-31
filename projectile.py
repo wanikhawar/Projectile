@@ -69,7 +69,7 @@ class Projectile:
         )
         plt.xlabel("$x$")
         plt.ylabel("$y$")
-        plt.title(f"Trajectory at t = {time_instant}s")
+        plt.title(f"Projectile at t = {time_instant}s")
 
         if velocity_vector:
             self.plot_velocity_vector(time_instant, velocity_color)
