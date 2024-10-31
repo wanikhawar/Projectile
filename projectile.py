@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 import numpy as np
 
 PI = np.pi
@@ -17,7 +18,7 @@ class Projectile:
     def velocity(self, t):
         vx = self.v0 * np.cos(self.theta)
         vy = self.v0 * np.sin(self.theta) - self.g * t
-        return np.round(vx), np.round(vy)
+        return np.round(vx, 2), np.round(vy, 2)
 
     def horizontal_range(self):
         R = (self.v0**2 * np.sin(2 * self.theta)) / self.g
@@ -30,3 +31,11 @@ class Projectile:
     def maximum_height(self):
         h_max = (self.v0 * np.sin(self.theta) ** 2) / (2 * self.g)
         return np.round(h_max, 2)
+
+    def plot_trajectory(self, dt):
+        t = np.arange(0, self.time_of_flight(), dt)
+        x, y = self.position(t)
+        plt.plot(x, y)
+        plt.xlabel("$x$")
+        plt.ylabel("$y$")
+        plt.show()
